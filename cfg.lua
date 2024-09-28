@@ -6,13 +6,13 @@ Config.Dealers = {
  {hash = `g_m_y_pologoon_02`, pos = vector3(1514.87, 6331.36, 24.07), heading = 10.24, talktext = 'Talk with Piter', vehiclehash = `baller`, vehiclepos = vector3(1511, 6332.42, 24), vehheading = 90.0, job = 'unemployed', grade = 2}
 }
 
-Config.PhonePos = {
+Config.PhonePos = { -- Phone positions.
 {model = `prop_office_phone_tnt`, pos = vector3(329.08, -2067.69, 19.9), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 0, text = 'Call Jack'},
 {model = `prop_office_phone_tnt`, pos = vector3(87.17, -1957.61, 21.3), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 1, text = 'Call John'},
 {model = `prop_office_phone_tnt`, pos = vector3(-237.17, -1537.21, 31), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 2, text = 'Call Piter'},
 }
 
-Config.WeaponPresets = {	
+Config.WeaponPresets = { -- Weapon presets for dealers.
 {PresetId = 1, label = 'Assault Rifle', name = 'weapon_assaultrifle', count = 1, price = 50},
 {PresetId = 1, label = 'Pistol', name = 'weapon_pistol', count = 5, price = 10},
 {PresetId = 1, label = 'Machine Pistol', name = 'weapon_machinepistol', count = 2, price = 10},
@@ -26,10 +26,10 @@ Config.WeaponPresets = {
 {PresetId = 3, label = 'Pump Shotgun', name = 'weapon_pumpshotgun', count = 1, price = 2},
 {PresetId = 3, label = 'Pistol', name = 'weapon_pistol', count = 5, price = 1},
 {PresetId = 3, label = 'Machine Pistol', name = 'weapon_machinepistol', count = 2, price = 8},
-{PresetId = 3, label = 'Knife', name = 'weapon_knife', count = 5, price = 6},
+{PresetId = 3, label = 'Knife', name = 'weapon_knife', count = 5, price = 6}, -- Label is displaying in menu. Name is a inventory item name
 }
 
-Config.PresetCount = 3
+Config.PresetCount = 3 -- Select presets count.
 
 -- CARS TODO
 Config.DealerCars = {
@@ -95,9 +95,9 @@ Config.DealerCars = {
 
 -- CARS
 
-Config.DeleteCoolDown = 65000
+Config.DeleteCoolDown = 65000 -- Time in ms when dealer drive off on vehicle
 
-Config.WaitCoolDown = 60000
+Config.WaitCoolDown = 60000 -- Time in ms after dealer deleting to make call again
 
 Config.SuccessMessage = 'Yes, I have the shit, Im at the point, arrive within an hour'
 
@@ -192,4 +192,3 @@ Config.PoliceNotifyExport = function()
         job = {"police"} -- jobs that will get the alerts
     })--]]
 end
-
