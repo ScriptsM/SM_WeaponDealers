@@ -1,18 +1,18 @@
 Config = {}
 
 Config.Dealers = {
- {hash = `u_m_m_edtoh`, pos = vector3(3691.19, 4559.34, 25.18), heading = 242.34, talktext = 'Talk with Jack', vehiclehash = `asea`, vehiclepos = vector3(3689.57, 4556.88, 25.1), vehheading = 120.1, job = 'unemployed', grade = 0},
+ {hash = `u_m_m_edtoh`, pos = vector3(3691.76, 4558.21, 25.24), heading = 298.39, talktext = 'Talk with Jack', vehiclehash = `asea`, vehiclepos = vector3(3689.57, 4556.88, 25.1), vehheading = 120.1, job = 'unemployed', grade = 0},
  {hash = `s_m_y_dealer_01`, pos = vector3(724.94, 4186.36, 40.71), heading = 140.71, talktext = 'Talk with John', vehiclehash = `stanier`, vehiclepos = vector3(728.16, 4185.43, 40.69), vehheading = 270.0, job = 'unemployed', grade = 1},
- {hash = `g_m_y_pologoon_02`, pos = vector3(1514.87, 6331.36, 24.07), heading = 10.24, talktext = 'Talk with Piter', vehiclehash = `baller`, vehiclepos = vector3(1511, 6332.42, 24), vehheading = 90.0, job = 'unemployed', grade = 2}
+ {hash = `g_m_y_pologoon_02`, pos = vector3(1514.87, 6331.36, 24.07), heading = 10.24, talktext = 'Talk with Piter', vehiclehash = `baller`, vehiclepos = vector3(1511, 6332.42, 24), vehheading = 90.0, job = 'unemployed', grade = 2},
 }
 
-Config.PhonePos = { -- Phone positions.
+Config.PhonePos = {
 {model = `prop_office_phone_tnt`, pos = vector3(329.08, -2067.69, 19.9), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 0, text = 'Call Jack'},
 {model = `prop_office_phone_tnt`, pos = vector3(87.17, -1957.61, 21.3), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 1, text = 'Call John'},
-{model = `prop_office_phone_tnt`, pos = vector3(-237.17, -1537.21, 31), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 2, text = 'Call Piter'},
+{model = `prop_office_phone_tnt`, pos = vector3(-237.17, -1537.21, 31), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 1, text = 'Call Piter'},
 }
 
-Config.WeaponPresets = { -- Weapon presets for dealers.
+Config.WeaponPresets = {	
 {PresetId = 1, label = 'Assault Rifle', name = 'weapon_assaultrifle', count = 1, price = 50},
 {PresetId = 1, label = 'Pistol', name = 'weapon_pistol', count = 5, price = 10},
 {PresetId = 1, label = 'Machine Pistol', name = 'weapon_machinepistol', count = 2, price = 10},
@@ -26,10 +26,10 @@ Config.WeaponPresets = { -- Weapon presets for dealers.
 {PresetId = 3, label = 'Pump Shotgun', name = 'weapon_pumpshotgun', count = 1, price = 2},
 {PresetId = 3, label = 'Pistol', name = 'weapon_pistol', count = 5, price = 1},
 {PresetId = 3, label = 'Machine Pistol', name = 'weapon_machinepistol', count = 2, price = 8},
-{PresetId = 3, label = 'Knife', name = 'weapon_knife', count = 5, price = 6}, -- Label is displaying in menu. Name is a inventory item name
+{PresetId = 3, label = 'Knife', name = 'weapon_knife', count = 5, price = 6},
 }
 
-Config.PresetCount = 3 -- Select presets count.
+Config.PresetCount = 3
 
 -- CARS TODO
 Config.DealerCars = {
@@ -95,9 +95,9 @@ Config.DealerCars = {
 
 -- CARS
 
-Config.DeleteCoolDown = 65000 -- Time in ms when dealer drive off on vehicle
+Config.DeleteCoolDown = 60000
 
-Config.WaitCoolDown = 60000 -- Time in ms after dealer deleting to make call again
+Config.WaitCoolDown = 60000
 
 Config.SuccessMessage = 'Yes, I have the shit, Im at the point, arrive within an hour'
 
@@ -105,14 +105,14 @@ Config.CDMessage = 'You fucked me up, theres nothing else. Call me later.'
 
 -- BRIDGE, DELETE '--'' FROM LINES YOU NEED
 
-Config.Framework = 'esx' --qb or esx
+Config.Framework = 'qb' --qb or esx
 
-Config.TargetSystem = 'ox' -- ox or qb
+Config.TargetSystem = 'qb' -- ox or qb
 
 Config.InventoryExport = function (name, count)
---exports['qb-inventory']:AddItem(source, name, count, false, false, false)
+exports['qb-inventory']:AddItem(source, name, count, false, false, false)
 
-exports.ox_inventory:AddItem(source, name, count)
+--exports.ox_inventory:AddItem(source, name, count)
 
 
 -- IF YOU ARE USING QUASAR: exports['qs-inventory']:AddItem(source, name, count)
@@ -146,19 +146,16 @@ if Config.Framework == 'esx' then
 end
 
 Config.NotificationExport = function(msg)
-exports['t-notify']:Alert({
-    style = 'info',
-    message = msg
-})
+QBCore.Functions.Notify(msg, 'success', 5000)
 end
 
 -- BLIPS
 
-Config.BlipSprite = 229
+Config.BlipSprite = 110
 Config.BlipColor = 0
 Config.BlipText = 'Weapon Dealer'
 
-Config.PhoneBlipSprite = 817
+Config.PhoneBlipSprite = 66
 Config.PhoneBlipColor = 0
 Config.PhoneBlipText = 'Dealer Phone'
 
@@ -192,3 +189,4 @@ Config.PoliceNotifyExport = function()
         job = {"police"} -- jobs that will get the alerts
     })--]]
 end
+
