@@ -7,7 +7,7 @@ Config.Dealers = {
 }
 
 Config.PhonePos = {
-{model = `prop_office_phone_tnt`, pos = vector3(329.08, -2067.69, 19.9), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 0, text = 'Call Jack'},
+{model = `prop_office_phone_tnt`, pos = vector3(3682.17, 4499.7, 23.4), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 0, text = 'Call Jack'},
 {model = `prop_office_phone_tnt`, pos = vector3(87.17, -1957.61, 21.3), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 1, text = 'Call John'},
 {model = `prop_office_phone_tnt`, pos = vector3(-237.17, -1537.21, 31), rot = vector3(0.0, 0.0, 0.0), job = 'unemployed', grade = 1, text = 'Call Piter'},
 }
@@ -18,7 +18,7 @@ Config.WeaponPresets = {
 {PresetId = 1, label = 'Machine Pistol', name = 'weapon_machinepistol', count = 2, price = 10},
 {PresetId = 1, label = 'Knife', name = 'weapon_knife', count = 5, price = 5},
 
-{PresetId = 2, label = 'Carbine Rifle', name = 'weapon_pistol', count = 1, price = 6},
+{PresetId = 2, label = 'Carbine Rifle', name = 'weapon_carbinerifle', count = 1, price = 6},
 {PresetId = 2, label = 'Combat Pistol', name = 'weapon_combatpistol', count = 5, price = 7},
 {PresetId = 2, label = 'SMG', name = 'weapon_minismg', count = 2, price = 6},
 {PresetId = 2, label = 'Knife', name = 'weapon_knife', count = 5, price = 6},
@@ -99,20 +99,16 @@ Config.DeleteCoolDown = 60000
 
 Config.WaitCoolDown = 60000
 
-Config.SuccessMessage = 'Yes, I have the shit, Im at the point, arrive within an hour'
-
-Config.CDMessage = 'You fucked me up, theres nothing else. Call me later.'
-
 -- BRIDGE, DELETE '--'' FROM LINES YOU NEED
 
-Config.Framework = 'qb' --qb or esx
+Config.Framework = 'esx' --qb or esx
 
-Config.TargetSystem = 'qb' -- ox or qb
+Config.TargetSystem = 'ox' -- ox or qb
 
 Config.InventoryExport = function (name, count)
-exports['qb-inventory']:AddItem(source, name, count, false, false, false)
+--exports['qb-inventory']:AddItem(source, name, count, false, false, false)
 
---exports.ox_inventory:AddItem(source, name, count)
+exports.ox_inventory:AddItem(source, name, count)
 
 
 -- IF YOU ARE USING QUASAR: exports['qs-inventory']:AddItem(source, name, count)
@@ -146,18 +142,20 @@ if Config.Framework == 'esx' then
 end
 
 Config.NotificationExport = function(msg)
-QBCore.Functions.Notify(msg, 'success', 5000)
+--QBCore.Functions.Notify(msg, 'success', 5000)
+exports['t-notify']:Alert({
+    style = 'error',
+    message = msg
+})
 end
 
 -- BLIPS
 
 Config.BlipSprite = 110
 Config.BlipColor = 0
-Config.BlipText = 'Weapon Dealer'
 
 Config.PhoneBlipSprite = 66
 Config.PhoneBlipColor = 0
-Config.PhoneBlipText = 'Dealer Phone'
 
 -- POLICE
 
@@ -189,4 +187,15 @@ Config.PoliceNotifyExport = function()
         job = {"police"} -- jobs that will get the alerts
     })--]]
 end
+
+Config.Locales = {
+    ['call_success'] = 'Yes, I have the shit, Im at the point, arrive within an hour',
+    ['call_cooldown'] = 'You fucked me up, theres nothing else. Call me later.',
+    ['dealer_blip'] = 'Weapon Dealer',
+    ['phone_blip'] = 'Dealer Phone',
+    ['name_text'] = 'Name: ',
+    ['price_text'] = 'Price:',
+    ['count_text'] = 'Count: ',
+    ['menu_heading'] = 'Dealer'
+}
 
