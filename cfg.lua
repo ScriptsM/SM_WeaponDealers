@@ -99,11 +99,45 @@ Config.DeleteCoolDown = 60000
 
 Config.WaitCoolDown = 60000
 
+Config.UseMarkers = true
+Config.DrawMarkerDistance = 5
+Config.InteractMarkerDistance = 2
+Config.PhoneInteractKey = 38
+Config.DealerInteractionKey = 38
+
+Config.MarkerSprite = 27
+Config.MarkerColor = {
+    r = 255,
+    g = 255,
+    b = 255,
+}
+Config.MarkerAlpha = 100
+Config.MarkerScale = vector3(1.0, 1.0, 1.0)
+Config.MarkerRotation = vector3(0, 180, 0)
+Config.MarkerZoffset = 0.1
+Config.MarkerZoffsetDealer = 0.5
+
+Config.PhoneHelpNotify = function()
+--IF YOU ARE NOT USING ESX:
+AddTextEntry("CallPhone", '~INPUT_PICKUP~ Call on phone')
+DisplayHelpTextThisFrame("CallPhone")
+
+-- FOR ESX DELETE '--': ESX.ShowHelpNotification('~INPUT_PICKUP~ Call on phone', true, false, -1)
+end
+
+Config.DealerHelpNotify = function()
+--IF YOU ARE NOT USING ESX:
+AddTextEntry("OpenDealer", '~INPUT_PICKUP~ To buy guns')
+DisplayHelpTextThisFrame("OpenDealer")
+
+-- FOR ESX DELETE '--': ESX.ShowHelpNotification('~INPUT_PICKUP~ To buy guns', true, false, -1)
+end
+
 -- BRIDGE, DELETE '--'' FROM LINES YOU NEED
 
 Config.Framework = 'esx' --qb or esx
 
-Config.TargetSystem = 'ox' -- ox or qb
+Config.TargetSystem = 'ox' -- ox or qb or disabled
 
 Config.InventoryExport = function (name, count)
 --exports['qb-inventory']:AddItem(source, name, count, false, false, false)
